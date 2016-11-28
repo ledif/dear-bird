@@ -27,8 +27,25 @@ function scrapeFile(path) {
       kvs.push([key, values])
     // Otherwise just take the next div
     } else {
-      const value = trim($(this).next('div').text())
-      kvs.push([key, value])
+      const value = $(this).next('div').text()
+
+      // Let's do some cleanup of actual transcript
+      if (key === "Transcript") {
+        let lines = value.split(/\n/)
+        lines = _.filter(lines, (line) => {
+					line = line.trim()
+					// Remove comments from transcript people
+          if (line[0] == '[' || line[line.length-1] == ']') return false
+					
+					// Remove lines that are just a number
+					if (line.length == 1) return false
+
+					return true
+				})
+				kvs.push([key, trim(lines.join(" "))])
+			} else {
+        kvs.push([key, trim(value)])
+			}
     }
   })
 
