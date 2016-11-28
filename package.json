@@ -4,13 +4,13 @@
   "description": "Analysis of the courtship letters between Lyndon and Lady Bird Johnson in the months before their marriage in 1934.",
   "main": "index.js",
   "scripts": {
-    "scrape": "./node_modules/.bin/babel-node scrape.js",
+    "scrape": "./node_modules/.bin/babel-node scrape.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "lodash": "^4.17.2",
+    "lodash": "^4.17.2"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
