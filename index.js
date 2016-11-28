@@ -1,16 +1,16 @@
-//var fetch = require('whatwg-fetch') 
-var request = require('request')
+import { readFileSync } from 'fs'
+import cheerio from 'cheerio'
 
-var endpoint = "http://archives.lbjlibrary.org/items/show/385"
+function scrapeFile(path) {
+  let file = readFileSync(path, "utf8");
 
-request({
-  uri: endpoint,
-	headers: {
-		'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36'
+  let $ = cheerio.load(file)
+	const header = $('h1')
 
-	},
-	}, function (error, response, body) {
-  if (!error && response.statusCode == 200) {
-	 console.log(body)
+  console.log(header.html());
 }
-})
+
+const path = "data/html/336.htm"
+const scraped = scrapeFile(path)
+
+//console.log(scraped;
