@@ -4,7 +4,7 @@
   "description": "Scape LBJ love letters",
   "main": "index.js",
   "scripts": {
-    "run": "./node_modules/.bin/babel-node index.js",
+    "scrape": "./node_modules/.bin/babel-node scrape.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
