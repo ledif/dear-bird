@@ -18,11 +18,18 @@ function scrapeFile(path) {
   // Each key-value pair is an h3 followed by a div
   let kvs = []
   $('h3').each(function(i, elem) {
-    const key = $(this).text()
-    const div = $(this).next('div')
-    const value = div.text();
+    const key = trim($(this).text())
 
-    kvs.push([trim(key), trim(value)])
+		// Tags are actually a series of anchors after the h3
+    if (key === "Tags") {
+      const anchors = $(this).nextAll('a') 
+		  const values = anchors.map(function(i, el) { return trim($(this).text())}).get()
+      kvs.push([key, values])
+		// Otherwise just take the next div
+		} else {
+      const value = trim($(this).next('div').text())
+      kvs.push([key, value])
+		}
   })
 
   // Remove useless key-value pairs

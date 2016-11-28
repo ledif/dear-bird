@@ -16,7 +16,7 @@ The structure of each transcript is as follows:
 - `Publisher`: publisher information
 - `Collection`: title and details regarding the collection of love letters
 - `Citation`: how to cite this letter
-- `Tags`: empty
+- `Tags`: array of tags associated with this letter
 
 Run
 ===
